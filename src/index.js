@@ -2,24 +2,32 @@ module.exports = function check(str, bracketsConfig) {
 	
 //const check = (str, bracketsConfig) => {
 	
-	let s = '';
+	let s = ''; 
 	let bArry = [];
 	let checkArry =[]
+	let firstStr = []
 	
-	
-	bracketsConfig.forEach(elem => {
-		checkArry.push(elem.join(''))
-	})
-	
-	bracketsConfig.forEach(arry => {
-		if(arry[0] == arry[1]){
+		bracketsConfig.forEach(elem => {
+		firstStr.push(elem)
+		})
+		console.log(bracketsConfig)
+		bracketsConfig.forEach(i =>{
+			if (i.length == 1){
+				checkArry.push(i[0] + i[0])
+			} else{ checkArry.push(i[0] + i[1])}
+		})
+
+	// ! создал список для проверки наличия элементов и массив для создания строки.
+
+	firstStr.forEach(arry => {
+		if (arry[0] == arry[1]){
 			arry.pop()
 		}
 		arry.forEach(e => {
 		bArry.push(e)
 	});
 });
-
+	
 
 str.split('').forEach(sE =>{
 			bArry.forEach(cE =>{
@@ -37,17 +45,18 @@ str.split('').forEach(sE =>{
 	
 	let lenValue = ''
 	
+	console.log(bArry)
+	console.log(checkArry)
+
 	do {
 		lenValue = strArry[0].length
 		checkArry.forEach(c => {
 			if(strArry[0].includes(c)){
 				strArry[0] = strArry[0].replace(c, '')
+				console.log(strArry[0])
 			}
 		})
 		
-		//console.log(s)
-		//console.log(bArry)
-		//console.log(checkArry)
 		
 	} while (lenValue != strArry[0].length)
 	if (lenValue == 0){
